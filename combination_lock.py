@@ -6,26 +6,26 @@ class CombinationLock:
         self.current_value = 50
 
     def rotate_right(self, value: int):
-        start = self.current_value
-        end = (start + value) % NUM_VALUES
+        count = 0
 
-        passes = (start + value) // NUM_VALUES
-        if end == 0:
-            passes += 1
+        for _ in range(value):
+            self.current_value = (self.current_value + 1) % NUM_VALUES
+            
+            if self.current_value == 0:
+                count += 1
 
-        self.current_value = end
-        return passes
+        return count
 
     def rotate_left(self, value: int):
-        start = self.current_value
-        end = (start - value) % NUM_VALUES
+        count = 0
 
-        passes = (start - value + (NUM_VALUES - 1)) // NUM_VALUES
-        if end == 0:
-            passes += 1
-        
-        self.current_value = end
-        return passes
+        for _ in range(value):
+            self.current_value = (self.current_value - 1) % NUM_VALUES
+
+            if self.current_value == 0:
+                count += 1
+
+        return count
 
     def rotate(self, value_string: str):
         if len(value_string) < 2:
