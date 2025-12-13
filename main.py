@@ -1,13 +1,19 @@
-from secret_entrance import main as secret_entrance_main
+import secret_entrance
+import gift_shop
 
 def day1():
-    return secret_entrance_main()
+    return secret_entrance.execute()
+
+def day2():
+    return gift_shop.execute()
+
 
 def main():
     day_string_prefix = 'Day'
     
     exercises = [
         (f'{day_string_prefix} 1 (Secret Entrance)', day1()),
+        (f'{day_string_prefix} 2 (Gift Shop)', day2()),
     ]
 
     for exercise in exercises:
